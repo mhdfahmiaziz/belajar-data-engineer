@@ -1,0 +1,25 @@
+-->  Documentation prefect : https://docs.prefect.io/latest/getting-started/installation/
+--> Documentation github prefect zoomcamp : https://github.com/discdiver/prefect-zoomcamp/blob/main/flows/01_start/README.md
+
+** installation : prefect recommend installing Prefect using a Python virtual environment manager such as pipenv, conda, 
+or virtualenv/venv
+
+   - using conda : conda create -n test_prefect python=3.9
+     and then conda activate test_prefect
+
+
+--> docker container local :
+** create postgres
+docker container create \
+> -e POSTGRES_USER="postgres" \
+> -e POSTGRES_PASSWORD="admin" \
+> -e POSTGRES_DB="ny_taxi" \
+> -v zoomcamp:/var/lib/postgresql/data \
+> -p 5432:5432 \
+> --network zoomcamp \
+> --name postgres_zoomcamp \
+> postgres:13
+
+
+--> create Blocks in prefect ui :
+    sqlalchemyconnector
