@@ -57,11 +57,14 @@ def main_flow():
     host = "localhost"
     port = "5432"
     db = "ny_taxi"
-    table_name = "yellow_taxi_trips"
-    csv_url = "https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_2021-01.csv.gz"
+    color = "yellow"
+    year = 2021
+    month = 1
+    dataset_file = f"{color}_tripdata_{year}-{month:02}"
+    dataset_url = f"https://github.com/DataTalksClub/nyc-tlc-data/releases/download/{color}/{dataset_file}.csv.gz"
 
     log_subflow(table_name)
-    raw_data = extract_data(csv_url)
+    raw_data = extract_data(dataset_url)
     data = transform_data(raw_data)
     ingest_data(user,password,host,port,db,table_name, data)
 
